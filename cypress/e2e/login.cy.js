@@ -5,7 +5,6 @@ describe('login', () => {
     cy.screenshot('apos-visitar-pagina')
   })
 
-
   it('Login com dados válidos deve permitir entrada no sistema', () => {
     //act
     cy.fixture('credenciais').then((credenciais) => {
