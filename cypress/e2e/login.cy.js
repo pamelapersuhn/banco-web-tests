@@ -7,13 +7,7 @@ describe('login', () => {
 
   it('Login com dados válidos deve permitir entrada no sistema', () => {
     //act
-    cy.fixture('credenciais').then((credenciais) => {
-      cy.get('#username').click().type(credenciais.valida.usuario)
-      cy.get('#senha').click().type(credenciais.valida.senha)
-    })
-    cy.screenshot('Apos preencher dados validos')
-    cy.contains('button','Entrar').click() 
-    cy.screenshot('Após clicar no botão entrar')
+    cy.FazerLoginCredenciaisValidos()
 
     //assert
     cy.contains('h4','Realizar Transferência').should('be.visible')
@@ -28,7 +22,7 @@ describe('login', () => {
     cy.contains('button','Entrar').click() 
 
     //assert
-    cy.get('.toast').should('have.text','Erro no login. Tente novamente.')
+    cy.verificarMensagemNoToast('Erro no login. Tente novamente.')
     
   })
 
